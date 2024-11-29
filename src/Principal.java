@@ -61,7 +61,7 @@ public class Principal {
             }
 
             Instant fin = Instant.now();
-            System.out.printf("Tiempo transcurrido desde que entró la primera persona: %s\n\n",
+            System.out.printf("Tiempo transcurrido desde que entró la primera persona: %s segundos\n\n",
                 Duration.between(inicio, fin).toSeconds());
 
             // Mostrar las mesas con las personas que se han sentado en cada mesa

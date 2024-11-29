@@ -86,8 +86,11 @@ public class Persona implements Runnable {
 
     @Override
     public void run() {
-        final int MAX_TIEMPO1=5000;                     // Nº máximo de milisegundos de pausa para pensar
-        boolean sentada=false;                          // ¿La persona se ha sentado?
+        final int MAX_TIEMPO1=5000;                                 // Nº máximo de milisegundos de pausa para pensar
+        final String CORAZON_ROJO="\u2764\uFE0F";                   // Corazón rojo
+        final String CORAZON_ROTO="\uD83D\uDC94";                   // Corazón roto
+        final String CARA_CON_MEJILLAS_SONROJADAS="\uD83D\uDE33";   // Cara con mejillas sonrojadas
+        boolean sentada=false;                                      // ¿La persona se ha sentado?
 
         do {
             int tiempo1 = (int) (Math.random() * MAX_TIEMPO1) + 1; // Tiempo entre 0 y 5000 milisegundos => [0-5] segundos
@@ -114,14 +117,16 @@ public class Persona implements Runnable {
                     Persona p1=mesa.getPrimeraPersonaSentada();
                     if (esCompatible(p1)) {
                         mesa.sentar(this);
-                        mensaje("%s Me he sentado en la mesa %d con %s y somos compatibles \u2764"
-                            .formatted(this, mesa.getNumero(), p1));
+                        mensaje("%s Me he sentado en la mesa %d con %s y somos compatibles %s"
+                            .formatted(this, mesa.getNumero(), p1, CORAZON_ROJO));
                         sentada=true;
                     } else
                         mensaje(("%s Me he encontrado en la mesa %d con %s y no somos compatibles"
-                            +" desgraciadamente \uD83D\uDC94").formatted(this, mesa.getNumero(), p1));
+                            +" desgraciadamente %s")
+                            .formatted(this, mesa.getNumero(), p1, CORAZON_ROTO));
                 } else  // Mesa llena
-                    mensaje("%s ¡Perdón! Que vaya bien vuestra cena \uD83D\uDE33".formatted(this));
+                    mensaje("%s ¡Perdón! Que vaya bien vuestra cena %s"
+                        .formatted(this, CARA_CON_MEJILLAS_SONROJADAS));
             }
         } while (!sentada);
     }
