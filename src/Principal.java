@@ -15,13 +15,21 @@ import static util.Util.titular;
  * Examen 1EV
  *
  * @author Eduardo Barra Balao
- * @version 0.1
+ * @version 0.2
  */
 public class Principal {
     private static final int NUM_MESAS=5;           // Número de mesas del restaurante
 
     public static void main(String[] args) {
-        titular("FIRST DATES");
+        titular("FIRST DATES v0.2");
+        System.out.println( """
+                            Ojo: se han sustituido las dos personas de orientación ASEXUAL por dos personas
+                                 de orientación BISEXUAL para que el programa pueda terminar con las mesas llenas.
+                                 Con las dos personas asexuales sentándose en mesas distintas (bastante probable)
+                                 el problema no tiene solución y el programa no termina. Se puede plantear como
+                                 solución que las personas se levanten tras un tiempo sin que se siente otra persona
+                                 en su mesa.
+                            """);
 
         List<Mesa> mesas=Fabrica.generarMesas(NUM_MESAS);
         List<Persona> personas = Fabrica.generarPersonas(mesas);
@@ -53,7 +61,7 @@ public class Principal {
             }
 
             Instant fin = Instant.now();
-            System.out.printf("Tiempo transcurrido desde que entró la primera persona: %s",
+            System.out.printf("Tiempo transcurrido desde que entró la primera persona: %s\n\n",
                 Duration.between(inicio, fin).toSeconds());
 
             // Mostrar las mesas con las personas que se han sentado en cada mesa

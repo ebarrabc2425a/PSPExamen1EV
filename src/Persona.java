@@ -86,7 +86,7 @@ public class Persona implements Runnable {
 
     @Override
     public void run() {
-        final int MAX_TIEMPO1=50;                       // Nº máximo de milisegundos de pausa para pensar
+        final int MAX_TIEMPO1=5000;                     // Nº máximo de milisegundos de pausa para pensar
         boolean sentada=false;                          // ¿La persona se ha sentado?
 
         do {
